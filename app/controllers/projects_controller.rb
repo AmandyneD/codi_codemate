@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: [ :show, :publish ]
+
   def index
     @projects = Project.status_published.order(created_at: :desc)
   end
@@ -29,20 +31,28 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
   end
 
   def publish
-    @project = Project.find(params[:id])
     @project.update!(status: :published)
     redirect_to projects_path, notice: "Projet publié."
   end
 
   private
 
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
   def project_params
     params.require(:project).permit(
-      :title, :category, :level, :duration, :max_team_members, :short_description, :full_description
+      :title,
+      :category,
+      :level,
+      :duration,
+      :max_team_members,
+      :short_description,
+      :full_description
     )
   end
 end
