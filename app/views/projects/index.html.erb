@@ -1,2 +1,15 @@
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+<h1>Projects</h1>
+<p class="text-muted">Published projects</p>
+
+<p><%= link_to "Create a New Project", new_project_path, class: "btn btn-primary" %></p>
+
+<% @projects.each do |p| %>
+  <div class="card p-3 mb-2">
+    <h4 class="mb-1"><%= link_to p.title, project_path(p) %></h4>
+    <div class="text-muted"><%= p.short_description %></div>
+  </div>
+<% end %>
+
+<% if @projects.empty? %>
+  <p class="text-muted">No published projects yet.</p>
+<% end %>
