@@ -25,27 +25,31 @@ module Codi
       data = JSON.parse(repaired)
       normalize(data)
     rescue => e
-      Rails.logger.error("[CODI] ERROR: #{e.class} #{e.message}")
+      log_error(e)
+      raise if ENV["CODI_DEBUG"].to_s == "1"
       fallback_payload
     end
 
     private
 
     def ask_model
-      res = @client.chat.completions.create(
+      res = chat_create(
         model: "gpt-4o-mini",
-        temperature: 0.7,
+        temperature: 0.4,
         messages: [
           { role: "system", content: system_prompt },
           { role: "user", content: user_prompt }
         ]
       )
 
-      extract_content(res)
+      content = extract_content(res)
+      raise "Empty content from OpenAI" if content.blank?
+
+      content
     end
 
     def repair_json(raw)
-      res = @client.chat.completions.create(
+      res = chat_create(
         model: "gpt-4o-mini",
         temperature: 0,
         messages: [
@@ -53,58 +57,55 @@ module Codi
             role: "system",
             content: "Return ONLY valid JSON. No markdown, no extra text. Keys must be: full_description, tech_stack, team_roles, objectives, timeline."
           },
-          {
-            role: "user",
-            content: "Fix this into valid JSON with the required keys.\n\n#{raw}"
-          }
+          { role: "user", content: "Fix this into valid JSON with the required keys.\n\n#{raw}" }
         ]
       )
 
-      extract_content(res)
+      content = extract_content(res)
+      raise "Empty repaired JSON from OpenAI" if content.blank?
+
+      content
     end
 
-    # Robust extraction (works with OpenAI ruby gem returning objects/hashes + symbol/string keys)
+    # Tente avec response_format puis retry sans si la gem ne supporte pas.
+    def chat_create(model:, temperature:, messages:)
+      params = { model: model, temperature: temperature, messages: messages }
+
+      begin
+        @client.chat.completions.create(**params, response_format: { type: "json_object" })
+      rescue ArgumentError => e
+        Rails.logger.warn("[CODI] response_format not supported by client, retrying without. (#{e.message})")
+        @client.chat.completions.create(**params)
+      end
+    end
+
+    # ✅ Gère: objets typés (OpenAI::Models::...) ET hashes
     def extract_content(res)
+      # 1) Format objet typé (ce que tu vois dans ta console Rails)
+      if res.respond_to?(:choices) && res.choices.is_a?(Array) && res.choices.first
+        choice = res.choices.first
+
+        # choice peut être un Hash ou un objet
+        if choice.respond_to?(:message) && choice.message
+          msg = choice.message
+          return msg.respond_to?(:content) ? msg.content.to_s.strip : ""
+        end
+
+        if choice.is_a?(Hash)
+          return (choice.dig(:message, :content) || choice.dig("message", "content")).to_s.strip
+        end
+      end
+
+      # 2) Fallback: on convertit en hash “deep” au max
       h = res.respond_to?(:to_h) ? res.to_h : res
-      h = deep_symbolize_keys(h)
+      choices = h[:choices] || h["choices"] || []
+      first = choices.first
 
-      # Standard response hash
-      content = h.dig(:choices, 0, :message, :content)
-
-      # Fallback if the gem returns objects
-      if content.blank? && res.respond_to?(:choices)
-        first = res.choices&.first
-
-        if first.respond_to?(:to_h)
-          fh = deep_symbolize_keys(first.to_h)
-          content = fh.dig(:message, :content)
-        end
-
-        if content.blank? && first.respond_to?(:message)
-          msg = first.message
-          if msg.is_a?(Hash)
-            content = msg[:content] || msg["content"]
-          elsif msg.respond_to?(:content)
-            content = msg.content
-          end
-        end
+      if first.respond_to?(:to_h)
+        first = first.to_h
       end
 
-      content.to_s.strip
-    end
-
-    def deep_symbolize_keys(obj)
-      case obj
-      when Hash
-        obj.each_with_object({}) do |(k, v), acc|
-          key = k.is_a?(String) ? k.to_sym : k
-          acc[key] = deep_symbolize_keys(v)
-        end
-      when Array
-        obj.map { |v| deep_symbolize_keys(v) }
-      else
-        obj
-      end
+      (first.dig(:message, :content) || first.dig("message", "content")).to_s.strip
     end
 
     def system_prompt
@@ -122,7 +123,6 @@ module Codi
 
     def user_prompt
       <<~TXT
-        INPUT:
         Title: #{@project.title}
         Category: #{@project.category}
         Level: #{@project.level}
@@ -132,7 +132,7 @@ module Codi
         Full description: #{@project.full_description}
 
         Requirements:
-        - Rewrite full_description in a structured way (sections + bullet points).
+        - Rewrite full_description with sections + bullet points.
         - tech_stack: 5-10 concrete items (frameworks, DB, auth, hosting, testing).
         - team_roles: 3-8 roles.
         - objectives: 4-8 concrete objectives.
@@ -154,17 +154,26 @@ module Codi
     end
 
     def fallback_payload
-      {
-        "full_description" => <<~DESC.strip,
-          #{(@project.full_description.presence || @project.short_description)}
+      base = (@project.full_description.presence || @project.short_description).to_s.strip
 
-          MVP scope:
-          - User onboarding + profile
-          - Core catalog & search
-          - Order / booking flow
-          - Admin backoffice
-          - Deployment + monitoring
-        DESC
+      full =
+        if base.match?(/mvp scope:/i)
+          base
+        else
+          <<~DESC.strip
+            #{base}
+
+            MVP scope:
+            - User onboarding + profile
+            - Core catalog & search
+            - Order / booking flow
+            - Admin backoffice
+            - Deployment + monitoring
+          DESC
+        end
+
+      {
+        "full_description" => full,
         "tech_stack" => [ "Ruby on Rails", "PostgreSQL", "Redis", "Sidekiq", "Bootstrap", "Hotwire", "RSpec", "Heroku" ],
         "team_roles" => [ "Product Owner", "Backend Developer (Rails)", "Frontend Developer", "UX/UI Designer", "QA/Tester" ],
         "objectives" => [
@@ -181,6 +190,11 @@ module Codi
           "Week 4: Tests, polish, deploy, demo"
         ]
       }
+    end
+
+    def log_error(e)
+      Rails.logger.error("[CODI] ERROR: #{e.class} #{e.message}")
+      Rails.logger.error(e.backtrace.first(10).join("\n")) if e.backtrace
     end
   end
 end
