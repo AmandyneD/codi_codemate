@@ -41,9 +41,20 @@ module Codi
         ]
       )
 
-      # Selon versions, res peut être un Hash ou un objet "to_h"
       h = res.respond_to?(:to_h) ? res.to_h : res
-      h.dig("choices", 0, "message", "content").to_s.strip
+
+      content =
+        h.dig("choices", 0, "message", "content") ||
+        h.dig(:choices, 0, :message, :content)
+
+      content = content.to_s.strip
+
+      if content.blank?
+        Rails.logger.warn("[CODI] Empty content. Full response: #{h.inspect}")
+        raise "Empty response from OpenAI"
+      end
+
+      content
     end
 
     def repair_json(raw)
@@ -57,7 +68,19 @@ module Codi
       )
 
       h = res.respond_to?(:to_h) ? res.to_h : res
-      h.dig("choices", 0, "message", "content").to_s.strip
+
+      content =
+        h.dig("choices", 0, "message", "content") ||
+        h.dig(:choices, 0, :message, :content)
+
+      content = content.to_s.strip
+
+      if content.blank?
+        Rails.logger.warn("[CODI] Empty repaired content. Full response: #{h.inspect}")
+        raise "Empty repaired JSON from OpenAI"
+      end
+
+      content
     end
 
     def system_prompt
