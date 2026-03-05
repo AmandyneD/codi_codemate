@@ -1,0 +1,10 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation" data-turbo-temporary>
+
+    <ul>
+      <% resource.errors.full_messages.each do %>
+        <li><%= "Email invalide" %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

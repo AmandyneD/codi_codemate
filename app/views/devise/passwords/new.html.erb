@@ -1,0 +1,25 @@
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+
+  <div class="card p-3 shadow border-2 border-warning" style= "width: 380px">
+
+    <h2 class="text-center mb-4 fw-bold" style="color: #ffc107;">
+      Mot de passe oublié ?
+    </h2>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="form-label fw-semibold" style="color: #ffc107;">
+    <p><%= f.label :email %></p>
+    <p><%= f.email_field :email,
+              autofocus: true,
+              autocomplete: "email",
+              class: "form-control bg-dark text-light border-secondary"%> </p>
+    
+  </div>
+
+  <div class="actions mt-3">
+  <%= f.submit "Renvoyer un mot de passe",
+      class: "btn btn-outline-secondary btn-sm fw-semibold" %>
+  </div>
+<% end %>

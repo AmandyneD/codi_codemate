@@ -1,0 +1,52 @@
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+
+  <div class="card p-3 shadow border-2 border-warning" style= "width: 380px">
+
+    <h2 class="text-center mb-4 fw-bold" style="color: #ffc107;">
+      Créer un compte
+    </h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="mb-3">
+        <%= f.label :email, class: "form-label fw-semibold", style: "color: #ffc107;" %>
+        <%= f.email_field :email,
+              autofocus: true,
+              autocomplete: "email",
+              class: "form-control bg-dark text-light border-secondary" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password, class: "form-label fw-semibold", style: "color: #ffc107;" %>
+
+        <% if @minimum_password_length %>
+          <p class="text-muted small mb-1">
+            (<%= @minimum_password_length %> caractères minimum)
+          </p>
+        <% end %>
+
+        <%= f.password_field :password,
+              autocomplete: "new-password",
+              class: "form-control bg-dark text-light border-secondary" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password_confirmation, class: "form-label fw-semibold", style: "color: #ffc107;" %>
+        <%= f.password_field :password_confirmation,
+              autocomplete: "new-password",
+              class: "form-control bg-dark text-light border-secondary" %>
+      </div>
+
+      <div class="d-grid mt-4">
+        <%= f.submit "Créer mon compte", class: "btn btn-warning fw-semibold shadow-sm" %>
+      </div>
+
+    <% end %>
+
+    
+
+  </div>
+
+</div>

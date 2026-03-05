@@ -1,0 +1,45 @@
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+
+  <div class="card p-3 shadow border-2 border-warning" style= "width: 380px">
+
+    <h2 class="text-center mb-4 fw-bold" style="color: #ffc107;">
+      Se connecter
+    </h2>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <div class="mb-3">
+        <%= f.label :email, class: "form-label fw-semibold", style: "color: #ffc107;" %>
+        <%= f.email_field :email,
+              autofocus: true,
+              autocomplete: "email",
+              class: "form-control bg-dark text-light border-secondary" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password, class: "form-label fw-semibold", style: "color: #ffc107;" %>
+        <%= f.password_field :password,
+              autocomplete: "current-password",
+              class: "form-control bg-dark text-light border-secondary" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="form-check mb-3">
+          <%= f.check_box :remember_me, class: "form-check-input" %>
+          <%= f.label :remember_me, class: "form-check-label", style: "color: #ffc107;" %>
+        </div>
+      <% end %>
+
+      <div class="d-grid mt-4">
+        <%= f.submit "Connexion", class: "btn btn-warning fw-semibold shadow-sm" %>
+      </div>
+
+    <% end %>
+
+    <div class="text-center mt-3">
+      <%= render "devise/shared/links" %>
+    </div>
+
+  </div>
+
+</div>
