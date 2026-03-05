@@ -1,5 +1,7 @@
-<h1>Create a New Project</h1>
-<p class="text-muted">Fill the form, then Codi generates a full dev project spec.</p>
+<h1 class="text-center mb-4 fw-bold" style="color: black;">
+  Créer un nouveau projet
+  </h1>
+<p class=" text-center mb-4 text-muted">Remplis le formulaire et fais toi aider par Codi pour affiner !</p>
 
 <%= form_with model: @project do |f| %>
   <% if @project.errors.any? %>
@@ -12,51 +14,51 @@
     </div>
   <% end %>
 
-  <div class="card p-3">
-    <div class="mb-3">
-      <%= f.label :title, "Project title*", class: "form-label" %>
-      <%= f.text_field :title, class: "form-control", placeholder: "e.g., Task Management App with Real-time Collaboration" %>
+  <div class="card p-3 shadow-sm border-2 border-warning">
+    <div class="card-title mb-1">
+      <%= f.label :title, "Nom de ton projet*", class: "form-label" %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Ex: Application Task Management" %>
     </div>
 
-    <div class="mb-3">
-      <%= f.label :short_description, "Short Description*", class: "form-label" %>
-      <%= f.text_field :short_description, class: "form-control", maxlength: 150, placeholder: "Max 150 characters" %>
+    <div class="card-title mb-1">
+      <%= f.label :short_description, "Description courte*", class: "form-label" %>
+      <%= f.text_field :short_description, class: "form-control", maxlength: 150, placeholder: "Max 150 caractères" %>
     </div>
 
-    <div class="mb-3">
-      <%= f.label :full_description, "Full Description*", class: "form-label" %>
-      <%= f.text_area :full_description, class: "form-control", rows: 4, placeholder: "Describe the idea, users, constraints..." %>
+    <div class="card-title mb-1">
+      <%= f.label :full_description, "Description complète*", class: "form-label" %>
+      <%= f.text_area :full_description, class: "form-control", rows: 4, placeholder: "Décris l'idée, les utilisateurs, les contraintes..." %>
     </div>
 
     <div class="row g-2 mb-3">
       <div class="col-md-6">
-        <%= f.label :category, "Category*", class: "form-label" %>
+        <%= f.label :category, "Categorie*", class: "form-label" %>
         <%= f.select :category, Project.categories.keys.map { |k| [k.humanize, k] },
-              { include_blank: "Select a category" }, class: "form-select" %>
+              { include_blank: "Selectionne une catégorie" }, class: "form-select" %>
       </div>
 
       <div class="col-md-6">
-        <%= f.label :duration, "Duration*", class: "form-label" %>
+        <%= f.label :duration, "Durée*", class: "form-label" %>
         <%= f.select :duration, Project.durations.keys.map { |k| [k.humanize, k] },
-              { include_blank: "Select a duration" }, class: "form-select" %>
+              { include_blank: "Selectionne une durée" }, class: "form-select" %>
       </div>
     </div>
 
     <div class="row g-2 mb-3">
       <div class="col-md-6">
-        <%= f.label :level, "Level*", class: "form-label" %>
+        <%= f.label :level, "Niveau*", class: "form-label" %>
         <%= f.select :level, Project.levels.keys.map { |k| [k.humanize, k] },
-              { include_blank: "Select a level" }, class: "form-select" %>
+              { include_blank: "Selectionne un niveau" }, class: "form-select" %>
       </div>
 
       <div class="col-md-6">
-        <%= f.label :max_team_members, "Max team members*", class: "form-label" %>
+        <%= f.label :max_team_members, "Nombre maximum de membres d'équipe*", class: "form-label" %>
         <%= f.select :max_team_members, (2..10).to_a, {}, class: "form-select" %>
       </div>
     </div>
 
     <div class="d-flex gap-2">
-      <%= link_to "Cancel", root_path, class: "btn btn-outline-secondary w-50" %>
+      <%= link_to "Annuler", root_path, class: "btn btn-outline-secondary w-50" %>
       <%= f.submit "Générer mon projet avec Codi", class: "btn btn-warning w-50" %>
     </div>
   </div>
