@@ -12,8 +12,8 @@
     <%= yield :head %>
 
     <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="icon" href="<%= asset_path 'perso_codemate.svg' %>" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="<%= asset_path 'perso_codemate.svg' %>">
 
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -30,7 +30,7 @@
         <%= image_tag "perso_codemate.svg", alt: "Codemate", height: 60 %>
         <% end %>
 
-        <div class="d-flex gap-3">
+        <div class="d-flex gap-4">
           <% if user_signed_in? %>
             <span class="text-muted align-self-center"><%= current_user.email %></span>
             <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary btn-sm" %>
