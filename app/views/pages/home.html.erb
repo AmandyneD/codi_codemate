@@ -1,5 +1,24 @@
-<h1>Codi Codemate</h1>
-<p>
-  <%= link_to "Create a New Project", new_project_path, class: "btn btn-warning" %>
-  <%= link_to "Browse Projects", projects_path, class: "btn btn-outline-secondary" %>
-</p>
+<div class="container text-center py-5">
+
+  <div class="p-5 rounded shadow card mb-3 shadow-sm border-2 border-warning" style="background-color: #f8f9fa ;">
+    <h1 class="display-4 fw-bold mb-4" style="color: black;">
+      Codi by Codemate
+    </h1>
+
+    <p class="lead mb-4" style="color: black;">
+      Construit, organise et partage tes projets avec d'autres développeurs !
+    </p>
+
+    <div class="d-flex justify-content-center gap-3 mt-4">
+      <%= link_to "Créer un nouveau projet",
+          new_project_path,
+          class: "btn btn-warning btn-lg px-4 fw-semibold shadow-sm" %>
+
+      <%= link_to "Parcourir les projets",
+          projects_path,
+          class: "btn btn-outline-dark btn-lg px-4 fw-semibold" %>
+    </div>
+  </div>
+
+</div>
+     
