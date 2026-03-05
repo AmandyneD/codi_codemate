@@ -32,33 +32,32 @@ module Codi
     private
 
     def ask_model
-      res = @client.chat(
-        parameters: {
-          model: "gpt-4o-mini",
-          temperature: 0.7,
-          messages: [
-            { role: "system", content: system_prompt },
-            { role: "user", content: user_prompt }
-          ]
-        }
+      res = @client.chat.completions.create(
+        model: "gpt-4o-mini",
+        temperature: 0.7,
+        messages: [
+          { role: "system", content: system_prompt },
+          { role: "user", content: user_prompt }
+        ]
       )
 
-      res.dig("choices", 0, "message", "content").to_s.strip
+      # Selon versions, res peut être un Hash ou un objet "to_h"
+      h = res.respond_to?(:to_h) ? res.to_h : res
+      h.dig("choices", 0, "message", "content").to_s.strip
     end
 
     def repair_json(raw)
-      res = @client.chat(
-        parameters: {
-          model: "gpt-4o-mini",
-          temperature: 0,
-          messages: [
-            { role: "system", content: "Return ONLY valid JSON. No markdown, no extra text. Keys must be: full_description, tech_stack, team_roles, objectives, timeline." },
-            { role: "user", content: "Fix this into valid JSON with the required keys.\n\n#{raw}" }
-          ]
-        }
+      res = @client.chat.completions.create(
+        model: "gpt-4o-mini",
+        temperature: 0,
+        messages: [
+          { role: "system", content: "Return ONLY valid JSON. No markdown, no extra text. Keys must be: full_description, tech_stack, team_roles, objectives, timeline." },
+          { role: "user", content: "Fix this into valid JSON with the required keys.\n\n#{raw}" }
+        ]
       )
 
-      res.dig("choices", 0, "message", "content").to_s.strip
+      h = res.respond_to?(:to_h) ? res.to_h : res
+      h.dig("choices", 0, "message", "content").to_s.strip
     end
 
     def system_prompt
