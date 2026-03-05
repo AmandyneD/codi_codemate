@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+  root to: "pages#home"
   devise_for :users
-  root "pages#home"
 
-  resources :projects do
+  resources :users, only: [ :show ]
+
+  resources :projects, only: [ :index, :show, :new, :create ] do
     member do
-      get :chat
+      patch :publish
     end
-    resources :messages, only: [ :create ]
+
+    resources :chats, only: [ :create ]
   end
 end

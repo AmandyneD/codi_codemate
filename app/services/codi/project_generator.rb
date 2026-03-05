@@ -41,18 +41,8 @@ module Codi
         ]
       )
 
-      h = res.respond_to?(:to_h) ? res.to_h : res
-
-      content =
-        h.dig("choices", 0, "message", "content") ||
-        h.dig(:choices, 0, :message, :content)
-
-      content = content.to_s.strip
-
-      if content.blank?
-        Rails.logger.warn("[CODI] Empty content. Full response: #{h.inspect}")
-        raise "Empty response from OpenAI"
-      end
+      content = extract_content(res)
+      raise "Empty response from model" if content.blank?
 
       content
     end
@@ -67,55 +57,69 @@ module Codi
         ]
       )
 
-      h = res.respond_to?(:to_h) ? res.to_h : res
-
-      content =
-        h.dig("choices", 0, "message", "content") ||
-        h.dig(:choices, 0, :message, :content)
-
-      content = content.to_s.strip
-
-      if content.blank?
-        Rails.logger.warn("[CODI] Empty repaired content. Full response: #{h.inspect}")
-        raise "Empty repaired JSON from OpenAI"
-      end
+      content = extract_content(res)
+      raise "Empty response from repair" if content.blank?
 
       content
     end
 
+    # ✅ Supporte les retours "objets" et "hash" selon versions du gem
+    def extract_content(res)
+      # objet
+      if res.respond_to?(:choices) && res.choices.respond_to?(:first)
+        choice = res.choices.first
+        if choice.respond_to?(:message) && choice.message.respond_to?(:content)
+          return choice.message.content.to_s.strip
+        end
+      end
+
+      # hash (symbol keys)
+      if res.respond_to?(:to_h)
+        h = res.to_h
+        return h.dig(:choices, 0, :message, :content).to_s.strip if h.is_a?(Hash)
+      end
+
+      # hash (string keys)
+      if res.is_a?(Hash)
+        return res.dig("choices", 0, "message", "content").to_s.strip
+      end
+
+      ""
+    end
+
     def system_prompt
       <<~SYS
-      You are Codi, a senior tech lead.
-      Output MUST be valid JSON ONLY (no markdown, no backticks, no prose).
-      JSON must include exactly these keys:
-      full_description (string),
-      tech_stack (array of strings),
-      team_roles (array of strings),
-      objectives (array of strings),
-      timeline (array of strings).
+        You are Codi, a senior tech lead.
+        Output MUST be valid JSON ONLY (no markdown, no backticks, no prose).
+        JSON must include exactly these keys:
+        full_description (string),
+        tech_stack (array of strings),
+        team_roles (array of strings),
+        objectives (array of strings),
+        timeline (array of strings).
       SYS
     end
 
     def user_prompt
       <<~TXT
-      INPUT:
-      Title: #{@project.title}
-      Category: #{@project.category}
-      Level: #{@project.level}
-      Duration: #{@project.duration}
-      Max team members: #{@project.max_team_members}
-      Short description: #{@project.short_description}
-      Full description: #{@project.full_description}
+        INPUT:
+        Title: #{@project.title}
+        Category: #{@project.category}
+        Level: #{@project.level}
+        Duration: #{@project.duration}
+        Max team members: #{@project.max_team_members}
+        Short description: #{@project.short_description}
+        Full description: #{@project.full_description}
 
-      Requirements:
-      - Rewrite full_description in a structured way (sections + bullet points).
-      - tech_stack: 5-10 concrete items (frameworks, DB, auth, hosting, testing).
-      - team_roles: 3-8 roles.
-      - objectives: 4-8 concrete objectives.
-      - timeline: 4-8 phases, week-based if possible.
+        Requirements:
+        - Rewrite full_description in a structured way (sections + bullet points).
+        - tech_stack: 5-10 concrete items (frameworks, DB, auth, hosting, testing).
+        - team_roles: 3-8 roles.
+        - objectives: 4-8 concrete objectives.
+        - timeline: 4-8 phases, week-based if possible.
 
-      Return ONLY JSON with keys:
-      full_description, tech_stack, team_roles, objectives, timeline
+        Return ONLY JSON with keys:
+        full_description, tech_stack, team_roles, objectives, timeline
       TXT
     end
 
@@ -132,14 +136,14 @@ module Codi
     def fallback_payload
       {
         "full_description" => <<~DESC.strip,
-        #{(@project.full_description.presence || @project.short_description)}
+          #{(@project.full_description.presence || @project.short_description)}
 
-        MVP scope:
-        - User onboarding + profile
-        - Core catalog & search
-        - Order / booking flow
-        - Admin backoffice
-        - Deployment + monitoring
+          FALLBACK MVP scope:
+          - User onboarding + profile
+          - Core catalog & search
+          - Order / booking flow
+          - Admin backoffice
+          - Deployment + monitoring
         DESC
         "tech_stack" => [ "Ruby on Rails", "PostgreSQL", "Redis", "Sidekiq", "Bootstrap", "Hotwire", "RSpec", "Heroku" ],
         "team_roles" => [ "Product Owner", "Backend Developer (Rails)", "Frontend Developer", "UX/UI Designer", "QA/Tester" ],
