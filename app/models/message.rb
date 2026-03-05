@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
 class Message < ApplicationRecord
   belongs_to :chat
 
-  validates :role, inclusion: { in: %w[system user assistant] }
+  ROLES = %w[system user assistant].freeze
+
+  validates :role, inclusion: { in: ROLES }
   validates :content, presence: true
 end

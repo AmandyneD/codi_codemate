@@ -2,7 +2,10 @@
 
 <h1 class="mb-1"><%= @project.title %></h1>
 <p class="text-muted mb-3">
-  <%= @project.category.humanize %> • <%= @project.level.humanize %> • <%= @project.duration.humanize %> • Max <%= @project.max_team_members %>
+  <%= @project.category.humanize %> •
+  <%= @project.level.humanize %> •
+  <%= @project.duration.humanize %> •
+  Max <%= @project.max_team_members %>
 </p>
 
 <div class="card p-3 mb-3">
@@ -14,51 +17,74 @@
   <div class="col-md-6">
     <div class="card p-3">
       <h4>Tech Stack</h4>
-      <ul class="mb-0">
-        <% Array(@project.tech_stack).each do |t| %>
-          <li><%= t %></li>
-        <% end %>
-      </ul>
+      <% tech_stack = Array(@project.tech_stack) %>
+      <% if tech_stack.any? %>
+        <ul class="mb-0">
+          <% tech_stack.each do |t| %>
+            <li><%= t %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="text-muted mb-0">No tech stack yet.</p>
+      <% end %>
     </div>
   </div>
 
   <div class="col-md-6">
     <div class="card p-3">
       <h4>Team Roles</h4>
-      <ul class="mb-0">
-        <% Array(@project.team_roles).each do |r| %>
-          <li><%= r %></li>
-        <% end %>
-      </ul>
+      <% team_roles = Array(@project.team_roles) %>
+      <% if team_roles.any? %>
+        <ul class="mb-0">
+          <% team_roles.each do |r| %>
+            <li><%= r %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="text-muted mb-0">No team roles yet.</p>
+      <% end %>
     </div>
   </div>
 
   <div class="col-md-6">
     <div class="card p-3">
       <h4>Objectives</h4>
-      <ul class="mb-0">
-        <% Array(@project.objectives).each do |o| %>
-          <li><%= o %></li>
-        <% end %>
-      </ul>
+      <% objectives = Array(@project.objectives) %>
+      <% if objectives.any? %>
+        <ul class="mb-0">
+          <% objectives.each do |o| %>
+            <li><%= o %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="text-muted mb-0">No objectives yet.</p>
+      <% end %>
     </div>
   </div>
 
   <div class="col-md-6">
     <div class="card p-3">
       <h4>Timeline</h4>
-      <ul class="mb-0">
-        <% Array(@project.timeline).each do |p| %>
-          <li><%= p %></li>
-        <% end %>
-      </ul>
+      <% timeline = Array(@project.timeline) %>
+      <% if timeline.any? %>
+        <ul class="mb-0">
+          <% timeline.each do |p| %>
+            <li><%= p %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="text-muted mb-0">No timeline yet.</p>
+      <% end %>
     </div>
   </div>
 </div>
 
 <div class="mt-4 d-flex gap-2">
   <% if @project.status_draft? %>
-    <%= button_to "Publish Project", publish_project_path(@project), method: :patch, class: "btn btn-success" %>
+    <%= button_to "Publish Project",
+          publish_project_project_path(@project),
+          method: :patch,
+          class: "btn btn-success" %>
   <% else %>
     <span class="badge bg-success align-self-center">Published</span>
   <% end %>

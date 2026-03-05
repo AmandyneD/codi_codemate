@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Project < ApplicationRecord
   has_one :chat, dependent: :destroy
 
@@ -16,4 +18,21 @@ class Project < ApplicationRecord
 
   validates :max_team_members,
             numericality: { only_integer: true, greater_than_or_equal_to: 2, less_than_or_equal_to: 10 }
+
+  # Helpers “safe arrays” pour les vues (évite les nil.each)
+  def tech_stack_list
+    Array(tech_stack).compact.map(&:to_s).map(&:strip).reject(&:blank?)
+  end
+
+  def team_roles_list
+    Array(team_roles).compact.map(&:to_s).map(&:strip).reject(&:blank?)
+  end
+
+  def objectives_list
+    Array(objectives).compact.map(&:to_s).map(&:strip).reject(&:blank?)
+  end
+
+  def timeline_list
+    Array(timeline).compact.map(&:to_s).map(&:strip).reject(&:blank?)
+  end
 end

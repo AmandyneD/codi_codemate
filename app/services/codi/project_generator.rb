@@ -41,10 +41,7 @@ module Codi
         ]
       )
 
-      content = extract_content(res)
-      raise "Empty response from model" if content.blank?
-
-      content
+      extract_content(res)
     end
 
     def repair_json(raw)
@@ -52,39 +49,62 @@ module Codi
         model: "gpt-4o-mini",
         temperature: 0,
         messages: [
-          { role: "system", content: "Return ONLY valid JSON. No markdown, no extra text. Keys must be: full_description, tech_stack, team_roles, objectives, timeline." },
-          { role: "user", content: "Fix this into valid JSON with the required keys.\n\n#{raw}" }
+          {
+            role: "system",
+            content: "Return ONLY valid JSON. No markdown, no extra text. Keys must be: full_description, tech_stack, team_roles, objectives, timeline."
+          },
+          {
+            role: "user",
+            content: "Fix this into valid JSON with the required keys.\n\n#{raw}"
+          }
         ]
       )
 
-      content = extract_content(res)
-      raise "Empty response from repair" if content.blank?
-
-      content
+      extract_content(res)
     end
 
-    # ✅ Supporte les retours "objets" et "hash" selon versions du gem
+    # Robust extraction (works with OpenAI ruby gem returning objects/hashes + symbol/string keys)
     def extract_content(res)
-      # objet
-      if res.respond_to?(:choices) && res.choices.respond_to?(:first)
-        choice = res.choices.first
-        if choice.respond_to?(:message) && choice.message.respond_to?(:content)
-          return choice.message.content.to_s.strip
+      h = res.respond_to?(:to_h) ? res.to_h : res
+      h = deep_symbolize_keys(h)
+
+      # Standard response hash
+      content = h.dig(:choices, 0, :message, :content)
+
+      # Fallback if the gem returns objects
+      if content.blank? && res.respond_to?(:choices)
+        first = res.choices&.first
+
+        if first.respond_to?(:to_h)
+          fh = deep_symbolize_keys(first.to_h)
+          content = fh.dig(:message, :content)
+        end
+
+        if content.blank? && first.respond_to?(:message)
+          msg = first.message
+          if msg.is_a?(Hash)
+            content = msg[:content] || msg["content"]
+          elsif msg.respond_to?(:content)
+            content = msg.content
+          end
         end
       end
 
-      # hash (symbol keys)
-      if res.respond_to?(:to_h)
-        h = res.to_h
-        return h.dig(:choices, 0, :message, :content).to_s.strip if h.is_a?(Hash)
-      end
+      content.to_s.strip
+    end
 
-      # hash (string keys)
-      if res.is_a?(Hash)
-        return res.dig("choices", 0, "message", "content").to_s.strip
+    def deep_symbolize_keys(obj)
+      case obj
+      when Hash
+        obj.each_with_object({}) do |(k, v), acc|
+          key = k.is_a?(String) ? k.to_sym : k
+          acc[key] = deep_symbolize_keys(v)
+        end
+      when Array
+        obj.map { |v| deep_symbolize_keys(v) }
+      else
+        obj
       end
-
-      ""
     end
 
     def system_prompt
@@ -138,7 +158,7 @@ module Codi
         "full_description" => <<~DESC.strip,
           #{(@project.full_description.presence || @project.short_description)}
 
-          FALLBACK MVP scope:
+          MVP scope:
           - User onboarding + profile
           - Core catalog & search
           - Order / booking flow
