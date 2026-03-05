@@ -1,0 +1,857 @@
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:14:00 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 18.5ms | GC: 0.0ms)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:25:51 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 2.6ms)
+
+
+  
+ActionView::Template::Error (The asset 'logo_codemate.svg' was not found in the load path.)
+Caused by: Propshaft::MissingAssetError (The asset 'logo_codemate.svg' was not found in the load path.)
+
+Information for: ActionView::Template::Error (The asset 'logo_codemate.svg' was not found in the load path.):
+    25:         <%= link_to "Codi", root_path, class: "text-decoration-none fw-bold" %>
+    26:         <%= link_to root_path, class: "d-flex align-items-center text-decoration-none fw-bold gap-2" do %>
+    27:         <%= image_tag "logo_codemate.svg", alt: "Codemate", height: 32 %>
+    28:         <% end %>
+    29: 
+    30:         <div class="d-flex gap-2">
+    31:           <% if user_signed_in? %>
+  
+app/views/layouts/application.html.erb:28
+app/views/layouts/application.html.erb:27
+
+Information for cause: Propshaft::MissingAssetError (The asset 'logo_codemate.svg' was not found in the load path.):
+  
+app/views/layouts/application.html.erb:28
+app/views/layouts/application.html.erb:27
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:26:26 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 26.2ms | GC: 0.5ms)
+Completed 200 OK in 34ms (Views: 29.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:26:28 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:34:24 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 7.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:34:39 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | GC: 0.0ms)
+Completed 200 OK in 7ms (Views: 5.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:34:46 +0100
+Processing by PagesController#home as */*
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:35:19 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | GC: 0.8ms)
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:35:25 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | GC: 0.2ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:35:44 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/layouts/application.html.erb)
+Caused by: ActiveSupport::SyntaxErrorProxy (/home/jorys/codi_codemate/app/views/layouts/application.html.erb:28: syntax error, unexpected local variable or method, expecting ')'
+... alt: "Codemate", height: 200px ); @output_buffer.safe_appen...
+...                             ^~
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/layouts/application.html.erb):
+1:    <!DOCTYPE html>
+2:    <html>
+3:      <head>
+4:        <title><%= content_for(:title) || "Codi Codemate" %></title>
+5:        <meta name="viewport" content="width=device-width,initial-scale=1">
+6:        <meta name="apple-mobile-web-app-capable" content="yes">
+7:        <meta name="application-name" content="Codi Codemate">
+8:        <meta name="mobile-web-app-capable" content="yes">
+9:        <%= csrf_meta_tags %>
+10:        <%= csp_meta_tag %>
+11:    
+12:        <%= yield :head %>
+13:    
+14:        <link rel="icon" href="/icon.png" type="image/png">
+15:        <link rel="icon" href="/icon.svg" type="image/svg+xml">
+16:        <link rel="apple-touch-icon" href="/icon.png">
+17:    
+18:        <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+19:        <%= javascript_importmap_tags %>
+20:      </head>
+21:    
+22:      <body>
+23:        <div class="container py-3">
+24:          <div class="d-flex justify-content-between align-items-center mb-3">
+25:            <%= link_to "Codi", root_path, class: "text-decoration-none fw-bold" %>
+26:            <%= link_to root_path, class: "d-flex align-items-center text-decoration-none fw-bold gap-2" do %>
+27:            <%= image_tag "logo_codemate.svg", alt: "Codemate", height: 200px %>
+28:            <% end %>
+29:    
+30:            <div class="d-flex gap-2">
+31:              <% if user_signed_in? %>
+32:                <span class="text-muted align-self-center"><%= current_user.email %></span>
+33:                <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary btn-sm" %>
+34:              <% else %>
+35:                <%= link_to "Login", new_user_session_path, class: "btn btn-outline-secondary btn-sm" %>
+36:                <%= link_to "Sign up", new_user_registration_path, class: "btn btn-warning btn-sm" %>
+37:              <% end %>
+38:            </div>
+39:          </div>
+40:    
+41:          <% if notice %>
+42:            <div class="alert alert-success"><%= notice %></div>
+43:          <% end %>
+44:    
+45:          <% if alert %>
+46:            <div class="alert alert-danger"><%= alert %></div>
+47:          <% end %>
+48:    
+49:          <%= yield %>
+50:        </div>
+51:      </body>
+52:    </html>
+  
+app/views/layouts/application.html.erb:28: syntax error, unexpected local variable or method, expecting ')'
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/home/jorys/codi_codemate/app/views/layouts/application.html.erb:28: syntax error, unexpected local variable or method, expecting ')'
+... alt: "Codemate", height: 200px ); @output_buffer.safe_appen...
+...                             ^~
+):
+  
+app/views/layouts/application.html.erb:28: syntax error, unexpected local variable or method, expecting ')'
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:35:56 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2026-03-05 12:35:59 +0100
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (1.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."status" = 1 ORDER BY "projects"."created_at" DESC /*action='index',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:7
+  Rendered projects/index.html.erb within layouts/application (Duration: 4.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | GC: 0.0ms)
+Completed 200 OK in 63ms (Views: 5.9ms | ActiveRecord: 20.0ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2026-03-05 12:35:59 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/shared/_links.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 16.0ms | GC: 1.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.0ms | GC: 1.3ms)
+Completed 200 OK in 40ms (Views: 20.1ms | ActiveRecord: 2.3ms (0 queries, 0 cached) | GC: 9.3ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2026-03-05 12:36:00 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/shared/_error_messages.html.erb (Duration: 0.4ms | GC: 0.0ms)
+  Rendered /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/shared/_links.html.erb (Duration: 0.2ms | GC: 0.0ms)
+  Rendered /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 3.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:36:14 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:36:18 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | GC: 0.3ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:39:31 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:40:12 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 10.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.7ms | GC: 0.0ms)
+Completed 200 OK in 29ms (Views: 12.6ms | ActiveRecord: 3.4ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:40:31 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | GC: 0.2ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2026-03-05 12:40:31 +0100
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."status" = 1 ORDER BY "projects"."created_at" DESC /*action='index',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:7
+  Rendered projects/index.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | GC: 0.2ms)
+Completed 200 OK in 13ms (Views: 5.2ms | ActiveRecord: 1.5ms (1 query, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:40:31 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | GC: 0.0ms)
+Completed 200 OK in 11ms (Views: 4.9ms | ActiveRecord: 1.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:41:27 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 3.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 8.5ms | ActiveRecord: 2.4ms (0 queries, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:41:33 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 15.7ms | GC: 9.5ms)
+Completed 200 OK in 29ms (Views: 17.1ms | ActiveRecord: 2.4ms (0 queries, 0 cached) | GC: 9.5ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:46:59 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 3.8ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 36.3ms | GC: 1.1ms)
+Completed 200 OK in 49ms (Views: 39.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.4ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:47:13 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 3.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | GC: 0.0ms)
+Completed 200 OK in 15ms (Views: 7.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:47:39 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 3.0ms | GC: 0.4ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | GC: 0.5ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.8ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 3, expected 1..2))
+Caused by: ArgumentError (wrong number of arguments (given 3, expected 1..2))
+
+Information for: ActionView::Template::Error (wrong number of arguments (given 3, expected 1..2)):
+    23:     <div class="container py-3">
+    24:       <div class="d-flex justify-content-between align-items-center mb-3 shadow p-3 mb-5 bg-body-tertiary rounded sticky-top">
+    25:         <%= link_to image_tag "codi.svg", root_path, class: "codi.svg" %>
+    26:         <%= link_to root_path, class: "d-flex align-items-center text-decoration-none fw-bold gap-2" do %>
+    27:         <%= image_tag "logo_codemate.svg", alt: "Codemate", height: 60 %>
+    28:         <% end %>
+    29: 
+  
+app/views/layouts/application.html.erb:26
+
+Information for cause: ArgumentError (wrong number of arguments (given 3, expected 1..2)):
+  
+app/views/layouts/application.html.erb:26
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:48:06 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 7.6ms | GC: 4.5ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.9ms | GC: 9.3ms)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 34.7ms)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/layouts/application.html.erb)
+Caused by: ActiveSupport::SyntaxErrorProxy (/home/jorys/codi_codemate/app/views/layouts/application.html.erb:26: syntax error, unexpected ',', expecting =>
+...di.svg", alt:"codi", root_path, class: "codi.svg" ); @output...
+...                              ^
+)
+
+Information for: ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template located at: app/views/layouts/application.html.erb):
+1:    <!DOCTYPE html>
+2:    <html>
+3:      <head>
+4:        <title><%= content_for(:title) || "Codi Codemate" %></title>
+5:        <meta name="viewport" content="width=device-width,initial-scale=1">
+6:        <meta name="apple-mobile-web-app-capable" content="yes">
+7:        <meta name="application-name" content="Codi Codemate">
+8:        <meta name="mobile-web-app-capable" content="yes">
+9:        <%= csrf_meta_tags %>
+10:        <%= csp_meta_tag %>
+11:    
+12:        <%= yield :head %>
+13:    
+14:        <link rel="icon" href="/icon.png" type="image/png">
+15:        <link rel="icon" href="/icon.svg" type="image/svg+xml">
+16:        <link rel="apple-touch-icon" href="/icon.png">
+17:    
+18:        <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+19:        <%= javascript_importmap_tags %>
+20:      </head>
+21:    
+22:      <body>
+23:        <div class="container py-3">
+24:          <div class="d-flex justify-content-between align-items-center mb-3 shadow p-3 mb-5 bg-body-tertiary rounded sticky-top">
+25:            <%= link_to image_tag "codi.svg", alt:"codi", root_path, class: "codi.svg" %>
+26:            <%= link_to root_path, class: "d-flex align-items-center text-decoration-none fw-bold gap-2" do %>
+27:            <%= image_tag "logo_codemate.svg", alt: "Codemate", height: 60 %>
+28:            <% end %>
+29:    
+30:            <div class="d-flex gap-2">
+31:              <% if user_signed_in? %>
+32:                <span class="text-muted align-self-center"><%= current_user.email %></span>
+33:                <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary btn-sm" %>
+34:              <% else %>
+35:                <%= link_to "Login", new_user_session_path, class: "btn btn-outline-secondary btn-sm" %>
+36:                <%= link_to "Sign up", new_user_registration_path, class: "btn btn-warning btn-sm" %>
+37:              <% end %>
+38:            </div>
+39:          </div>
+40:    
+41:          <% if notice %>
+42:            <div class="alert alert-success"><%= notice %></div>
+43:          <% end %>
+44:    
+45:          <% if alert %>
+46:            <div class="alert alert-danger"><%= alert %></div>
+47:          <% end %>
+48:    
+49:          <%= yield %>
+50:        </div>
+51:      </body>
+52:    </html>
+  
+app/views/layouts/application.html.erb:26: syntax error, unexpected ',', expecting =>
+
+Information for cause: ActiveSupport::SyntaxErrorProxy (/home/jorys/codi_codemate/app/views/layouts/application.html.erb:26: syntax error, unexpected ',', expecting =>
+...di.svg", alt:"codi", root_path, class: "codi.svg" ); @output...
+...                              ^
+):
+  
+app/views/layouts/application.html.erb:26: syntax error, unexpected ',', expecting =>
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:49:15 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 7.2ms | GC: 4.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | GC: 8.4ms)
+Completed 200 OK in 46ms (Views: 20.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 24.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:49:26 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | GC: 3.0ms)
+Completed 200 OK in 9ms (Views: 5.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 5.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:49:29 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | GC: 0.5ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:49:33 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.8ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | GC: 2.1ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 2.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:49:35 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 2.3ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 2.9ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:49:53 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.6ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | GC: 0.4ms)
+Completed 200 OK in 14ms (Views: 6.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:50:43 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2026-03-05 12:50:49 +0100
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (28.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."status" = 1 ORDER BY "projects"."created_at" DESC /*action='index',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:7
+  Rendered projects/index.html.erb within layouts/application (Duration: 30.2ms | GC: 0.1ms)
+  Rendered layout layouts/application.html.erb (Duration: 31.9ms | GC: 0.1ms)
+Completed 200 OK in 38ms (Views: -8.5ms | ActiveRecord: 41.0ms (1 query, 0 cached) | GC: 0.1ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:50:49 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | GC: 0.0ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:51:12 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 3.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 8.0ms | ActiveRecord: 4.4ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:51:13 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:51:24 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 3.6ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | GC: 0.2ms)
+Completed 200 OK in 20ms (Views: 8.1ms | ActiveRecord: 2.0ms (0 queries, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:51:35 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | GC: 0.2ms)
+Completed 200 OK in 20ms (Views: 8.6ms | ActiveRecord: 1.7ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:53:53 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 3.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | GC: 0.0ms)
+Completed 200 OK in 22ms (Views: 9.1ms | ActiveRecord: 2.3ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:53:57 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:53:58 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:53:58 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 1.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | GC: 0.0ms)
+Completed 200 OK in 12ms (Views: 3.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 6.8ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2026-03-05 12:54:00 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/shared/_links.html.erb (Duration: 1.3ms | GC: 0.6ms)
+  Rendered /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 3.8ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | GC: 0.6ms)
+Completed 200 OK in 16ms (Views: 8.5ms | ActiveRecord: 1.4ms (0 queries, 0 cached) | GC: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:54:02 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2026-03-05 12:54:02 +0100
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."status" = 1 ORDER BY "projects"."created_at" DESC /*action='index',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:7
+  Rendered projects/index.html.erb within layouts/application (Duration: 2.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.0ms)
+Completed 200 OK in 11ms (Views: 4.5ms | ActiveRecord: 0.4ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:54:05 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 1.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:54:05 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 1.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:54:16 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | GC: 0.3ms)
+Completed 200 OK in 19ms (Views: 7.6ms | ActiveRecord: 1.9ms (0 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:54:38 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | GC: 0.0ms)
+Completed 200 OK in 17ms (Views: 5.9ms | ActiveRecord: 2.3ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:54:52 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.6ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | GC: 0.5ms)
+Completed 200 OK in 19ms (Views: 8.3ms | ActiveRecord: 1.7ms (0 queries, 0 cached) | GC: 0.6ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:54:59 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.6ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | GC: 0.3ms)
+Completed 200 OK in 17ms (Views: 6.0ms | ActiveRecord: 2.2ms (0 queries, 0 cached) | GC: 0.7ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:55:14 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | GC: 0.8ms)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:56:09 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 10.6ms | GC: 7.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 14.0ms | GC: 7.8ms)
+Completed 200 OK in 26ms (Views: 15.2ms | ActiveRecord: 1.7ms (0 queries, 0 cached) | GC: 7.8ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:56:45 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.6ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | GC: 0.2ms)
+Completed 200 OK in 18ms (Views: 6.1ms | ActiveRecord: 2.1ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:56:51 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | GC: 0.0ms)
+Completed 200 OK in 17ms (Views: 5.9ms | ActiveRecord: 2.2ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:57:53 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | GC: 0.3ms)
+Completed 200 OK in 19ms (Views: 6.2ms | ActiveRecord: 2.4ms (0 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:58:02 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.2ms | GC: 0.3ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.9ms | GC: 0.3ms)
+Completed 200 OK in 18ms (Views: 8.1ms | ActiveRecord: 1.7ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:58:10 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | GC: 0.0ms)
+Completed 200 OK in 19ms (Views: 6.2ms | ActiveRecord: 2.7ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:58:41 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | GC: 0.2ms)
+Completed 200 OK in 18ms (Views: 6.2ms | ActiveRecord: 2.4ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 12:58:50 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.3ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:59:25 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | GC: 0.0ms)
+Completed 200 OK in 24ms (Views: 8.1ms | ActiveRecord: 2.8ms (0 queries, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 12:59:34 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 3.3ms | GC: 0.6ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | GC: 0.6ms)
+Completed 200 OK in 24ms (Views: 7.2ms | ActiveRecord: 1.6ms (0 queries, 0 cached) | GC: 7.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 13:02:34 +0100
+Processing by ProjectsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | GC: 0.2ms)
+Completed 200 OK in 20ms (Views: 7.6ms | ActiveRecord: 1.8ms (0 queries, 0 cached) | GC: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 13:02:48 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.8ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2026-03-05 13:02:50 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/shared/_links.html.erb (Duration: 0.5ms | GC: 0.0ms)
+  Rendered /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 2.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | GC: 0.0ms)
+Completed 200 OK in 12ms (Views: 6.0ms | ActiveRecord: 1.4ms (0 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2026-03-05 13:02:51 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/shared/_links.html.erb (Duration: 0.3ms | GC: 0.0ms)
+  Rendered /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 1.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2026-03-05 13:02:52 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/shared/_links.html.erb (Duration: 0.1ms | GC: 0.0ms)
+  Rendered /home/jorys/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/sessions/new.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 13:03:18 +0100
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | GC: 0.0ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 14:07:02 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | GC: 0.3ms)
+Completed 200 OK in 21ms (Views: 10.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 2.3ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 14:07:10 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.8ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | GC: 0.4ms)
+Completed 200 OK in 16ms (Views: 6.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 14:07:15 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | GC: 0.0ms)
+Completed 200 OK in 14ms (Views: 6.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 14:07:26 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 3.3ms | GC: 0.2ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | GC: 0.4ms)
+Completed 200 OK in 14ms (Views: 7.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 1.2ms)
+
+
