@@ -1,22 +1,30 @@
 <p><%= link_to "← Back to projects", projects_path %></p>
 
-<h1 class="mb-1"><%= @project.title %></h1>
-<p class="text-muted mb-3">
+<h1 class="text-center mb-4 fw-bold" style="color: black;"><%= @project.title %></h1>
+<p class="text-center mb-4 text-muted">
   <%= @project.category.to_s.humanize %> •
   <%= @project.level.to_s.humanize %> •
   <%= @project.duration.to_s.humanize %> •
   Max <%= @project.max_team_members %>
 </p>
 
-<div class="card p-3 mb-3">
+<div class="mb-2 d-flex gap-5">
+  <% if @project.status_draft? %>
+    <%= button_to "Publish Project", publish_project_path(@project), method: :patch, class: "btn btn-success" %>
+  <% else %>
+    <span class="badge bg-success align-self-center">Published</span>
+  <% end %>
+</div>
+
+<div class="card p-3 mb-3 shadow-sm border-2 border-warning">
   <h3>Description</h3>
   <p><%= simple_format(@project.full_description.to_s) %></p>
 </div>
 
 <div class="row g-3">
   <div class="col-md-6">
-    <div class="card p-3">
-      <h4>Tech Stack</h4>
+    <div class="card p-3 shadow-sm border-2 border-warning">
+      <h4>Stack technique</h4>
       <ul class="mb-0">
         <% Array(@project.tech_stack).each do |t| %>
           <li><%= t %></li>
@@ -26,8 +34,8 @@
   </div>
 
   <div class="col-md-6">
-    <div class="card p-3">
-      <h4>Team Roles</h4>
+    <div class="card p-3 shadow-sm border-2 border-warning">
+      <h4>Rôles d'équipe</h4>
       <ul class="mb-0">
         <% Array(@project.team_roles).each do |r| %>
           <li><%= r %></li>
@@ -37,8 +45,8 @@
   </div>
 
   <div class="col-md-6">
-    <div class="card p-3">
-      <h4>Objectives</h4>
+    <div class="card p-3 shadow-sm border-2 border-warning">
+      <h4>Objectifs</h4>
       <ul class="mb-0">
         <% Array(@project.objectives).each do |o| %>
           <li><%= o %></li>
@@ -48,7 +56,7 @@
   </div>
 
   <div class="col-md-6">
-    <div class="card p-3">
+    <div class="card p-3 shadow-sm border-2 border-warning">
       <h4>Timeline</h4>
       <ul class="mb-0">
         <% Array(@project.timeline).each do |p| %>
@@ -57,12 +65,4 @@
       </ul>
     </div>
   </div>
-</div>
-
-<div class="mt-4 d-flex gap-2">
-  <% if @project.status_draft? %>
-    <%= button_to "Publish Project", publish_project_path(@project), method: :patch, class: "btn btn-success" %>
-  <% else %>
-    <span class="badge bg-success align-self-center">Published</span>
-  <% end %>
 </div>
