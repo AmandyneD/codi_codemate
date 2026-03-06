@@ -7,28 +7,35 @@ module Codi
   class ProjectRefiner
     def self.system_prompt
       <<~SYS
-        You are Codi, a senior tech lead.
-        You are refining a project spec iteratively through a chat.
+        You are Codi, a senior tech lead refining a software project specification through chat.
 
-        Output MUST be valid JSON ONLY (no markdown, no backticks, no prose).
-        JSON must include exactly these keys:
-        full_description (string),
-        tech_stack (array of strings),
-        team_roles (array of strings),
-        objectives (array of strings),
-        timeline (array of strings).
+        You must ALWAYS return valid JSON only.
+        No markdown.
+        No prose outside JSON.
+        No backticks.
 
-        Rules:
-        - Keep existing information unless the user asks to change it.
-        - If user requests tone/language changes, adjust wording but keep meaning.
-        - Use concrete tech items (not vague).
+        Your JSON must contain exactly these keys:
+        - full_description (string)
+        - tech_stack (array of strings)
+        - team_roles (array of strings)
+        - objectives (array of strings)
+        - timeline (array of strings)
+
+        Critical rules:
+        - You are given the CURRENT complete project state.
+        - You must always return the FULL updated project spec, not only the changed field.
+        - Never remove existing information unless the user explicitly asks to remove or replace it.
+        - If the user asks to add one technology, keep the rest of the stack.
+        - If the user asks to refine one section, preserve all other sections.
         - Avoid duplicates.
+        - Keep output concrete, realistic, and presentation-ready.
+        - If a field is not mentioned by the user, keep it as-is.
       SYS
     end
 
     def self.seed_user_prompt(project)
       <<~TXT
-        Here is the current project context:
+        CURRENT PROJECT STATE
 
         Title: #{project.title}
         Category: #{project.category}
@@ -37,15 +44,23 @@ module Codi
         Max team members: #{project.max_team_members}
         Short description: #{project.short_description}
 
-        Current full_description:
+        CURRENT full_description:
         #{project.full_description}
 
-        Current tech_stack: #{Array(project.tech_stack).join(", ")}
-        Current team_roles: #{Array(project.team_roles).join(", ")}
-        Current objectives: #{Array(project.objectives).join(", ")}
-        Current timeline: #{Array(project.timeline).join(", ")}
+        CURRENT tech_stack:
+        #{Array(project.tech_stack).join(", ")}
 
-        From now on, the user will ask refinements. Apply them and return the updated JSON.
+        CURRENT team_roles:
+        #{Array(project.team_roles).join(", ")}
+
+        CURRENT objectives:
+        #{Array(project.objectives).join(", ")}
+
+        CURRENT timeline:
+        #{Array(project.timeline).join(", ")}
+
+        The next user message is a refinement request.
+        Return the FULL UPDATED JSON specification.
       TXT
     end
 
@@ -58,7 +73,7 @@ module Codi
     def call
       res = chat_create(
         model: "gpt-4o-mini",
-        temperature: 0.3,
+        temperature: 0.2,
         messages: serialized_messages
       )
 
@@ -66,11 +81,11 @@ module Codi
       raise "Empty content from OpenAI" if content.blank?
 
       data = JSON.parse(content)
-      normalize(data)
+      normalize_and_fill_missing(data)
     rescue JSON::ParserError => e
       Rails.logger.warn("[CODI][Refiner] JSON parse failed: #{e.message}")
       fallback_from_project
-    rescue => e
+    rescue StandardError => e
       Rails.logger.error("[CODI][Refiner] ERROR: #{e.class} #{e.message}")
       fallback_from_project
     end
@@ -78,21 +93,26 @@ module Codi
     private
 
     def serialized_messages
-      # On prend l'historique du chat, mais on limite pour éviter de grossir à l’infini
-      msgs = @chat.messages.order(:created_at).last(20).map do |m|
+      history = @chat.messages.order(:created_at).last(12).map do |m|
         { role: m.role, content: m.content.to_s }
       end
 
-      # Si jamais le chat a été créé sans seed, on injecte le contexte
-      if msgs.none? { |m| m[:role] == "system" }
-        msgs.unshift({ role: "system", content: self.class.system_prompt })
-      end
+      latest_user_message = history.reverse.find { |m| m[:role] == "user" }
 
-      msgs
+      [
+        { role: "system", content: self.class.system_prompt },
+        { role: "user", content: self.class.seed_user_prompt(@project) },
+        latest_user_message || { role: "user", content: "Keep the current project state unchanged and return the full JSON." }
+      ]
     end
 
     def chat_create(model:, temperature:, messages:)
-      params = { model: model, temperature: temperature, messages: messages }
+      params = {
+        model: model,
+        temperature: temperature,
+        messages: messages
+      }
+
       begin
         @client.chat.completions.create(**params, response_format: { type: "json_object" })
       rescue ArgumentError
@@ -103,10 +123,12 @@ module Codi
     def extract_content(res)
       if res.respond_to?(:choices) && res.choices.is_a?(Array) && res.choices.first
         choice = res.choices.first
+
         if choice.respond_to?(:message) && choice.message
           msg = choice.message
           return msg.respond_to?(:content) ? msg.content.to_s.strip : ""
         end
+
         if choice.is_a?(Hash)
           return (choice.dig(:message, :content) || choice.dig("message", "content")).to_s.strip
         end
@@ -116,17 +138,32 @@ module Codi
       choices = h[:choices] || h["choices"] || []
       first = choices.first
       first = first.to_h if first.respond_to?(:to_h)
+
       (first.dig(:message, :content) || first.dig("message", "content")).to_s.strip
     end
 
-    def normalize(data)
+    def normalize_and_fill_missing(data)
+      full_description = clean_text(data["full_description"])
+      tech_stack = clean_array(data["tech_stack"])
+      team_roles = clean_array(data["team_roles"])
+      objectives = clean_array(data["objectives"])
+      timeline = clean_array(data["timeline"])
+
       {
-        "full_description" => data["full_description"].to_s,
-        "tech_stack" => Array(data["tech_stack"]).map(&:to_s).map(&:strip).reject(&:empty?),
-        "team_roles" => Array(data["team_roles"]).map(&:to_s).map(&:strip).reject(&:empty?),
-        "objectives" => Array(data["objectives"]).map(&:to_s).map(&:strip).reject(&:empty?),
-        "timeline" => Array(data["timeline"]).map(&:to_s).map(&:strip).reject(&:empty?)
+        "full_description" => full_description.presence || @project.full_description.to_s,
+        "tech_stack" => tech_stack.presence || Array(@project.tech_stack),
+        "team_roles" => team_roles.presence || Array(@project.team_roles),
+        "objectives" => objectives.presence || Array(@project.objectives),
+        "timeline" => timeline.presence || Array(@project.timeline)
       }
+    end
+
+    def clean_text(value)
+      value.to_s.strip
+    end
+
+    def clean_array(value)
+      Array(value).map(&:to_s).map(&:strip).reject(&:empty?).uniq
     end
 
     def fallback_from_project
