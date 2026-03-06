@@ -17,6 +17,7 @@
 
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
@@ -42,7 +43,7 @@
       </div>
 
       <% if notice %>
-        <div class="alert alert-success"><%= notice %></div>
+      <div class="alert alert-success"><%= notice %></div>
       <% end %>
 
       <% if alert %>
