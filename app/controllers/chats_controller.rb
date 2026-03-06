@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 class ChatsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_project
 
   def show
