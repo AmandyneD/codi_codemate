@@ -11,12 +11,9 @@
   </div>
 </div>
 
-<%= turbo_stream_from "chat_#{@chat.id}_messages" %>
-
 <div id="messages"
      class="card p-3 mb-3"
-     style="max-height: 55vh; overflow: auto;"
-     data-controller="autoscroll">
+     style="max-height: 55vh; overflow: auto;">
   <% @messages.each do |m| %>
     <% next if m.role == "system" %>
     <%= render "messages/message", message: m %>
