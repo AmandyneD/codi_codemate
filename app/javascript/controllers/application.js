@@ -1,9 +1,15 @@
-import { Application } from "@hotwired/stimulus"
+import "@hotwired/turbo-rails"
 
-const application = Application.start()
+function scrollChatToBottom() {
+  const messages = document.getElementById("messages")
+  if (!messages) return
 
-// Configure Stimulus development experience
-application.debug = false
-window.Stimulus   = application
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      messages.scrollTop = messages.scrollHeight
+    })
+  })
+}
 
-export { application }
+document.addEventListener("turbo:load", scrollChatToBottom)
+document.addEventListener("turbo:render", scrollChatToBottom)
