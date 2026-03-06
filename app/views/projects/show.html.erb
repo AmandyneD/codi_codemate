@@ -70,9 +70,11 @@
 <div class="mt-4 d-flex gap-2 mb-3">
   <%= link_to "Affiner avec Codi", project_chat_path(@project), class: "btn btn-outline-primary" %>
 
-    <%= link_to "Supprimer mon projet",
-      project_path(@project) ,
-      data: { turbo_method: :delete, turbo_confirm: "Supprimer ce projet ?" },
-      class: "btn btn-outline-danger fw-semibold" %>
-
+  <%= form_with url: project_path(@project), method: :delete, class: "d-inline" do %>
+  <button type="submit" class="btn btn-outline-danger fw-semibold"
+          onclick="return confirm('Supprimer ce projet ?');">
+    <i class="bi bi-trash me-1"></i>
+    Supprimer mon projet
+  </button>
+<% end %>
 </div>

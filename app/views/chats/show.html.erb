@@ -26,7 +26,7 @@
   </div>
   <%= f.submit "Envoyer à Codi", class: "btn btn-primary" %>
 
-  <%= link_to "Valider", publish_project_path(@project), data: { turbo_method: :patch }, class: "btn btn-outline-success" %>
+  <%= link_to "Valider", project_path(@project), data: { turbo_method: :patch }, class: "btn btn-outline-success" %>
 <% end %>
 
 <div class="mt-3">
