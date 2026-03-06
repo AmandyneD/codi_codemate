@@ -1,9 +1,9 @@
-<p><%= link_to "← Back to project", project_path(@project) %></p>
+<p><%= link_to "Retour à mes projets", projects_path, class: "btn btn-outline-secondary" %></p>
 
-<h2 class="mb-3">Chat with Codi</h2>
+<h2 class="mb-3">Chat avec Codi</h2>
 
 <div class="mb-3">
-  <div class="card p-3">
+  <div class="card p-3 shadow-sm border-2 border-warning">
     <strong><%= @project.title %></strong>
     <div class="text-muted">
       <%= @project.category.humanize %> • <%= @project.level.humanize %> • <%= @project.duration.humanize %>
@@ -11,7 +11,7 @@
   </div>
 </div>
 
-<div class="card p-3 mb-3" style="max-height: 55vh; overflow:auto;">
+<div class="card p-3 mb-3 shadow-sm border-2 border-warning" style="max-height: 55vh; overflow:auto;">
   <% @messages.each do |m| %>
     <% next if m.role == "system" %>
 
@@ -29,10 +29,12 @@
 </div>
 
 <%= form_with url: project_chat_messages_path(@project), scope: :message, method: :post do |f| %>
-  <div class="mb-2">
+  <div class="card p-3 mb-3 shadow-sm border-2 border-warning">
     <%= f.text_area :content, rows: 3, class: "form-control", placeholder: "Ex: Remplace AWS par Heroku, et enlève MongoDB. Je veux PostgreSQL." %>
   </div>
-  <%= f.submit "Send to Codi", class: "btn btn-primary" %>
+  <%= f.submit "Envoyer à Codi", class: "btn btn-primary" %>
+
+  <%= link_to "Valider", publish_project_path(@project), data: { turbo_method: :patch }, class: "btn btn-outline-success" %>
 <% end %>
 
 <div class="mt-3">
