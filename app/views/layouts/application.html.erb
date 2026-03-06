@@ -20,13 +20,13 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <div class="d-flex justify-content-between align-items-center mb-3 shadow p-3 mb-5 bg-body-tertiary rounded sticky-top">
         <%= link_to root_path, class: "d-flex align-items-center text-decoration-none fw-bold gap-2" do %>
         <%= image_tag "codi.svg", alt: "Codi", height: 40 %>
         <% end %>
 
-        <%= link_to root_path, class: "d-flex align-items-center text-decoration-none fw-bold gap-3" do %>
+        <%= link_to root_path, class: "d-flex align-items-center text-decoration-none fw-bold gap-2" do %>
         <%= image_tag "perso_codemate.svg", alt: "Codemate", height: 60 %>
         <% end %>
 
@@ -35,8 +35,8 @@
             <span class="text-muted align-self-center"><%= current_user.email %></span>
             <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary btn-sm" %>
           <% else %>
-            <%= link_to "Login", new_user_session_path, class: "btn btn-outline-secondary btn-sm" %>
-            <%= link_to "Sign up", new_user_registration_path, class: "btn btn-warning btn-sm" %>
+            <%= link_to "Se connecter", new_user_session_path, class: "btn btn-outline-secondary btn-sm" %>
+            <%= link_to "Créer un compte", new_user_registration_path, class: "btn btn-warning btn-sm" %>
           <% end %>
         </div>
       </div>
