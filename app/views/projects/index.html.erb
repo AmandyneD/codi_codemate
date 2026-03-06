@@ -1,15 +1,27 @@
-<h1>Projects</h1>
-<p class="text-muted">Published projects</p>
+<div class="container py-5">
 
-<p><%= link_to "Create a New Project", new_project_path, class: "btn btn-primary" %></p>
+  <h1 class="text-center mb-4 fw-bold" style="color: black;">
+  Mes projets
+  </h1>
 
-<% @projects.each do |p| %>
-  <div class="card p-3 mb-2">
-    <h4 class="mb-1"><%= link_to p.title, project_path(p) %></h4>
-    <div class="text-muted"><%= p.short_description %></div>
+  <% @projects.each do |p| %>
+    <div class="card mb-3 shadow-sm border-2 border-warning">
+      <div class="card-body">
+        <h4 class="card-title mb-1">
+          <%= link_to p.title, project_path(p), class: "text-dark text-decoration-none fw-semibold" %>
+        </h4>
+        <p class="card-text text-muted  mb-0"><%= p.short_description %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @projects.empty? %>
+    <p class="text-muted fst-italic mt-3">Aucun projet publié pour le moment.</p>
+  <% end %>
+
+  <div class="mt-4">
+    <%= link_to "Créer un nouveau projet",
+        new_project_path,
+        class: "btn btn-warning btn-lg px-4 fw-semibold shadow-sm" %>
   </div>
-<% end %>
-
-<% if @projects.empty? %>
-  <p class="text-muted">No published projects yet.</p>
-<% end %>
+</div>
