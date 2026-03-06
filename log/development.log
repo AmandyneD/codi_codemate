@@ -4021,3 +4021,183 @@ Completed 200 OK in 16ms (Views: 8.9ms | ActiveRecord: 1.5ms (0 queries, 0 cache
 >>>>>>> 8cc8dbd68cfafa348b7e9940321061ac9c4a9e03
 
 
+Started GET "/" for 127.0.0.1 at 2026-03-05 17:11:11 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (4.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodiCodemate'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (4.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodiCodemate'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodiCodemate'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodiCodemate'*/[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='home',application='CodiCodemate',controller='pages'*/[0m
+  ↳ app/views/layouts/application.html.erb:35
+  Rendered layout layouts/application.html.erb (Duration: 145.4ms | GC: 2.6ms)
+Completed 200 OK in 198ms (Views: 110.7ms | ActiveRecord: 47.7ms (1 query, 0 cached) | GC: 3.1ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 17:23:29 +0100
+Started GET "/projects" for 127.0.0.1 at 2026-03-05 17:23:29 +0100
+Processing by ProjectsController#new as HTML
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 110.6ms | GC: 0.0ms)
+  [1m[36mProject Load (92.8ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."status" = 1 ORDER BY "projects"."created_at" DESC /*action='index',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:8
+  Rendered projects/index.html.erb within layouts/application (Duration: 155.2ms | GC: 0.0ms)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='index',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/views/layouts/application.html.erb:35
+  Rendered layout layouts/application.html.erb (Duration: 173.3ms | GC: 0.0ms)
+Completed 200 OK in 474ms (Views: 100.8ms | ActiveRecord: 93.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mUser Load (99.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='new',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/views/layouts/application.html.erb:35
+  Rendered layout layouts/application.html.erb (Duration: 235.9ms | GC: 0.0ms)
+Completed 200 OK in 540ms (Views: 93.0ms | ActiveRecord: 217.9ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2026-03-05 17:23:34 +0100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProject Load (1.9ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 2 LIMIT 1 /*action='show',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:61:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/show.html.erb within layouts/application (Duration: 32.1ms | GC: 0.0ms)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/views/layouts/application.html.erb:35
+  Rendered layout layouts/application.html.erb (Duration: 41.3ms | GC: 0.0ms)
+Completed 200 OK in 60ms (Views: 42.0ms | ActiveRecord: 2.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2026-03-05 17:28:13 +0100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProject Load (24.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 2 LIMIT 1 /*action='show',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:61:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/show.html.erb within layouts/application (Duration: 22.5ms | GC: 0.0ms)
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='show',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/views/layouts/application.html.erb:35
+  Rendered layout layouts/application.html.erb (Duration: 87.9ms | GC: 0.0ms)
+Completed 200 OK in 180ms (Views: 98.9ms | ActiveRecord: 26.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 17:55:03 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (4.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodiCodemate'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodiCodemate'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodiCodemate'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodiCodemate'*/[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.0ms | GC: 0.4ms)
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='home',application='CodiCodemate',controller='pages'*/[0m
+  ↳ app/views/layouts/application.html.erb:35
+  Rendered layout layouts/application.html.erb (Duration: 150.6ms | GC: 5.7ms)
+Completed 200 OK in 193ms (Views: 102.9ms | ActiveRecord: 58.3ms (1 query, 0 cached) | GC: 7.8ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2026-03-05 17:55:09 +0100
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = 1 ORDER BY "users"."id" ASC LIMIT 1 /*action='destroy',application='CodiCodemate',controller='sessions'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*action='destroy',application='CodiCodemate',controller='sessions'*/[0m
+  [1m[36mUser Update (11.6ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = NULL, "updated_at" = '2026-03-05 16:55:09.251928' WHERE "users"."id" = 1 /*action='destroy',application='CodiCodemate',controller='sessions'*/[0m
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT /*action='destroy',application='CodiCodemate',controller='sessions'*/[0m
+Redirected to http://127.0.0.1:3000/
+Completed 303 See Other in 36ms (ActiveRecord: 16.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2026-03-05 17:55:09 +0100
+Processing by PagesController#home as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2026-03-05 17:55:09 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering /home/po/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/po/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/shared/_error_messages.html.erb (Duration: 0.7ms | GC: 0.0ms)
+  Rendered /home/po/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/shared/_links.html.erb (Duration: 0.8ms | GC: 0.0ms)
+  Rendered /home/po/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/devise-5.0.2/app/views/devise/registrations/new.html.erb within layouts/application (Duration: 11.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.1ms | GC: 0.0ms)
+Completed 200 OK in 19ms (Views: 16.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2026-03-05 17:55:12 +0100
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (2.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."status" = 1 ORDER BY "projects"."created_at" DESC /*action='index',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:8
+  Rendered projects/index.html.erb within layouts/application (Duration: 15.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 17.1ms | GC: 0.0ms)
+Completed 200 OK in 32ms (Views: 15.8ms | ActiveRecord: 5.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2026-03-05 17:55:14 +0100
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 7.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | GC: 0.0ms)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/projects" for 127.0.0.1 at 2026-03-05 17:55:19 +0100
+Processing by ProjectsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "project"=>{"title"=>"", "short_description"=>"", "full_description"=>"", "category"=>"", "duration"=>"", "level"=>"", "max_team_members"=>"5"}, "commit"=>"Générer mon projet avec Codi"}
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 9.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 17ms (Views: 12.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/projects" for 127.0.0.1 at 2026-03-05 17:55:41 +0100
+Processing by ProjectsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "project"=>{"title"=>"Destroye!!!", "short_description"=>"concert rock/metal a lyon", "full_description"=>"", "category"=>"mobile", "duration"=>"two_weeks", "level"=>"beginner", "max_team_members"=>"5"}, "commit"=>"Générer mon projet avec Codi"}
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/new.html.erb within layouts/application (Duration: 4.0ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 6.0ms | GC: 0.0ms)
+Completed 422 Unprocessable Content in 10ms (Views: 6.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/projects" for 127.0.0.1 at 2026-03-05 17:55:51 +0100
+Processing by ProjectsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "project"=>{"title"=>"Destroye!!!", "short_description"=>"concert rock/metal a lyon", "full_description"=>";, n:;n :; :mk   ;j l,", "category"=>"mobile", "duration"=>"two_weeks", "level"=>"beginner", "max_team_members"=>"5"}, "commit"=>"Générer mon projet avec Codi"}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN /*action='create',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:25:in `create'
+  [1m[36mProject Create (6.3ms)[0m  [1m[32mINSERT INTO "projects" ("category", "created_at", "duration", "full_description", "level", "max_team_members", "objectives", "short_description", "status", "team_roles", "tech_stack", "timeline", "title", "updated_at") VALUES (1, '2026-03-05 16:55:51.066559', 0, ';, n:;n :; :mk   ;j l,', 0, 5, NULL, 'concert rock/metal a lyon', 0, NULL, NULL, NULL, 'Destroye!!!', '2026-03-05 16:55:51.066559') RETURNING "id" /*action='create',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT /*action='create',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:25:in `create'
+[ProjectsController#create] Codi generation failed: KeyError key not found: "OPENAI_API_KEY"
+Redirected to http://127.0.0.1:3000/projects/3
+↳ app/controllers/projects_controller.rb:46:in `rescue in create'
+Completed 302 Found in 63ms (ActiveRecord: 8.1ms (1 query, 0 cached) | GC: 36.0ms)
+
+
+Started GET "/projects/3" for 127.0.0.1 at 2026-03-05 17:55:51 +0100
+Processing by ProjectsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mProject Load (0.7ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 3 LIMIT 1 /*action='show',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:61:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/show.html.erb within layouts/application (Duration: 5.4ms | GC: 1.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | GC: 1.0ms)
+Completed 200 OK in 13ms (Views: 7.7ms | ActiveRecord: 0.7ms (1 query, 0 cached) | GC: 1.0ms)
+
+
