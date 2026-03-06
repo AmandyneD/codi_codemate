@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [ :show, :publish ]
+  before_action :set_project, only: [ :show, :destroy, :publish ]
 
   def index
     @projects = Project.status_published.order(created_at: :desc)
@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
   def destroy
   @project = Project.find(params[:id])
   @project.destroy
-  redirect_to projects_path, notice: "Projet supprimé avec succès💥."
+  redirect_to projects_path, notice: "Projet supprimé avec succès 💥."
   end
 
   def publish
@@ -67,6 +67,7 @@ class ProjectsController < ApplicationController
   def set_project
     @project = Project.find(params[:id])
   end
+
 
   def project_params
     params.require(:project).permit(
