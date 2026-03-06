@@ -24,11 +24,6 @@ class ChatsController < ApplicationController
       content: Codi::ProjectRefiner.system_prompt
     )
 
-    chat.messages.create!(
-      role: "user",
-      content: Codi::ProjectRefiner.seed_user_prompt(project)
-    )
-
     chat
   end
 end
