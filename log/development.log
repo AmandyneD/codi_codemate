@@ -7850,3 +7850,32 @@ From now on, the user will ask refinements. Apply them and return the updated JS
 Completed 200 OK in 110ms (Views: 4.4ms | ActiveRecord: 22.9ms (6 queries, 0 cached) | GC: 50.3ms)
 
 
+[dotenv] Set [36mOPENAI_API_KEY[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodiCodemate'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodiCodemate'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodiCodemate'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='CodiCodemate'*/[0m
+Started GET "/projects/16" for ::1 at 2026-03-06 09:28:08 +0100
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mProject Load (17.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = 16 LIMIT 1 /*action='show',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/controllers/projects_controller.rb:61:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/show.html.erb within layouts/application (Duration: 3.1ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | GC: 0.2ms)
+Completed 200 OK in 31ms (Views: 6.2ms | ActiveRecord: 24.4ms (1 query, 0 cached) | GC: 0.4ms)
+
+
+Started GET "/projects" for ::1 at 2026-03-06 09:28:11 +0100
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (2.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."status" = 1 ORDER BY "projects"."created_at" DESC /*action='index',application='CodiCodemate',controller='projects'*/[0m
+  ↳ app/views/projects/index.html.erb:8
+  Rendered projects/index.html.erb within layouts/application (Duration: 6.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | GC: 0.0ms)
+Completed 200 OK in 14ms (Views: 6.9ms | ActiveRecord: 2.5ms (1 query, 0 cached) | GC: 0.6ms)
+
+
