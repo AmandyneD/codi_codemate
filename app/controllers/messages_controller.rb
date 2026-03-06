@@ -23,7 +23,6 @@ class MessagesController < ApplicationController
     )
 
     safe_updates = build_safe_project_updates(payload)
-
     @project.update!(safe_updates) if safe_updates.any?
 
     redirect_to project_chat_path(@project), notice: "Codi a mis à jour le projet."
@@ -58,12 +57,13 @@ class MessagesController < ApplicationController
     timeline         = normalized_array(payload["timeline"])
 
     updates[:full_description] = full_description if full_description.present?
-    updates[:tech_stack] = tech_stack if tech_stack.present?
-    updates[:team_roles] = team_roles if team_roles.present?
-    updates[:objectives] = objectives if objectives.present?
-    updates[:timeline] = timeline if timeline.present?
 
-    updates
+    updates[:tech_stack] = merge_array_field(@project.tech_stack, tech_stack)
+    updates[:team_roles] = merge_array_field(@project.team_roles, team_roles)
+    updates[:objectives] = merge_array_field(@project.objectives, objectives)
+    updates[:timeline]   = merge_array_field(@project.timeline, timeline)
+
+    updates.compact_blank
   end
 
   def normalized_text(value)
@@ -86,5 +86,20 @@ class MessagesController < ApplicationController
     else
       nil
     end
+  end
+
+  def merge_array_field(existing, incoming)
+    existing_clean = Array(existing).map { |item| item.to_s.strip }.reject(&:blank?)
+    incoming_clean = Array(incoming).map { |item| item.to_s.strip }.reject(&:blank?)
+
+    return existing_clean if incoming_clean.blank?
+    return incoming_clean if existing_clean.blank?
+
+    # Si Codi renvoie une version plus complète, on la prend telle quelle
+    return incoming_clean if incoming_clean.length >= existing_clean.length
+
+    # Si Codi renvoie une réponse partielle (ex: juste ["Python"]),
+    # on l’ajoute à l’existant sans perdre les autres éléments.
+    (incoming_clean + existing_clean).uniq
   end
 end
