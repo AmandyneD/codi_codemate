@@ -18,7 +18,7 @@
 
 <div class="card p-3 mb-3 shadow-sm border-2 border-warning">
   <h3>Description</h3>
-  <p><%= simple_format(@project.full_description.to_s) %></p>
+  <%= simple_format(@project.full_description) %>
 </div>
 
 <div class="row g-3">
@@ -26,7 +26,7 @@
     <div class="card p-3 shadow-sm border-2 border-warning">
       <h4>Stack technique</h4>
       <ul class="mb-0">
-        <% Array(@project.tech_stack).each do |t| %>
+        <% @project.tech_stack_list.each do |t| %>
           <li><%= t %></li>
         <% end %>
       </ul>
@@ -37,7 +37,7 @@
     <div class="card p-3 shadow-sm border-2 border-warning">
       <h4>Rôles d'équipe</h4>
       <ul class="mb-0">
-        <% Array(@project.team_roles).each do |r| %>
+        <% @project.team_roles_list.each do |r| %>
           <li><%= r %></li>
         <% end %>
       </ul>
@@ -48,7 +48,7 @@
     <div class="card p-3 shadow-sm border-2 border-warning">
       <h4>Objectifs</h4>
       <ul class="mb-0">
-        <% Array(@project.objectives).each do |o| %>
+        <% @project.objectives_list.each do |o| %>
           <li><%= o %></li>
         <% end %>
       </ul>
@@ -59,10 +59,23 @@
     <div class="card p-3 shadow-sm border-2 border-warning">
       <h4>Timeline</h4>
       <ul class="mb-0">
-        <% Array(@project.timeline).each do |p| %>
+        <% @project.timeline_list.each do |p| %>
           <li><%= p %></li>
         <% end %>
       </ul>
     </div>
   </div>
+</div>
+
+<div class="mt-4 d-flex gap-2">
+  <%= link_to "Affiner avec Codi", project_chat_path(@project), class: "btn btn-outline-primary" %>
+
+  <% if @project.status_draft? %>
+    <%= button_to "Publish Project",
+      publish_project_path(@project),
+      method: :patch,
+      class: "btn btn-success" %>
+  <% else %>
+    <span class="badge bg-success align-self-center">Published</span>
+  <% end %>
 </div>

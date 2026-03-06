@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   resources :projects, only: [ :index, :show, :new, :create ] do
     member do
       patch :publish
-      get :chat # /projects/:id/chat
     end
 
-    # /projects/:project_id/chat (POST) pour envoyer un message
-    resource :chat, only: [ :create ], controller: "chats"
+    # Un chat unique par project (has_one :chat)
+    resource :chat, only: [ :show ], controller: "chats" do
+      resources :messages, only: [ :create ]
+    end
   end
 end
