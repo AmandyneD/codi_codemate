@@ -1,7 +1,7 @@
 <%= form_with url: project_chat_messages_path(project),
               scope: :message,
-              method: :post do |f| %>
-
+              method: :post,
+              data: { turbo: true } do |f| %>
   <div class="mb-2">
     <%= f.text_area :content,
       rows: 3,
@@ -10,5 +10,4 @@
   </div>
 
   <%= f.submit "Send to Codi", class: "btn btn-primary" %>
-
 <% end %>

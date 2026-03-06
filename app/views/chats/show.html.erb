@@ -15,31 +15,21 @@
 
 <div id="messages"
      class="card p-3 mb-3"
-     style="max-height:55vh; overflow:auto;"
+     style="max-height: 55vh; overflow: auto;"
      data-controller="autoscroll">
   <% @messages.each do |m| %>
     <% next if m.role == "system" %>
-
     <%= render "messages/message", message: m %>
   <% end %>
 </div>
 
 <div id="message_form">
-  <%= form_with model: [@project, @chat, @message] do |f| %>
-    <div class="mb-2">
-      <%= f.text_area :content,
-        rows: 3,
-        class: "form-control",
-        placeholder: "Ex: Remplace AWS par Heroku, et enlève MongoDB. Je veux PostgreSQL." %>
-    </div>
-
-    <%= f.submit "Send to Codi", class: "btn btn-primary" %>
-  <% end %>
+  <%= render "messages/form", project: @project %>
 </div>
 
 <div class="mt-3">
   <small class="text-muted">
-    Astuce: demande “modifie uniquement le tech stack” ou “rends la description plus pro / plus courte”.
+    Astuce : demande “modifie uniquement le tech stack” ou “rends la description plus pro / plus courte”.
     Codi renverra un JSON et le projet sera mis à jour automatiquement.
   </small>
 </div>
