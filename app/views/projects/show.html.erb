@@ -1,4 +1,4 @@
-<p><%= link_to "← Back to projects", projects_path %></p>
+<p><%= link_to "Retour à mes projets", projects_path, class: "btn btn-outline-secondary" %></p>
 
 <h1 class="text-center mb-4 fw-bold" style="color: black;"><%= @project.title %></h1>
 <p class="text-center mb-4 text-muted">
@@ -67,15 +67,12 @@
   </div>
 </div>
 
-<div class="mt-4 d-flex gap-2">
+<div class="mt-4 d-flex gap-2 mb-3">
   <%= link_to "Affiner avec Codi", project_chat_path(@project), class: "btn btn-outline-primary" %>
 
-  <% if @project.status_draft? %>
-    <%= button_to "Publish Project",
-      publish_project_path(@project),
-      method: :patch,
-      class: "btn btn-success" %>
-  <% else %>
-    <span class="badge bg-success align-self-center">Published</span>
-  <% end %>
+    <%= link_to "Supprimer mon projet",
+      project_path(@project) ,
+      data: { turbo_method: :delete, turbo_confirm: "Supprimer ce projet ?" },
+      class: "btn btn-outline-danger fw-semibold" %>
+
 </div>

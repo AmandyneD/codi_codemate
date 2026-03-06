@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [ :show ]
 
-  resources :projects, only: [ :index, :show, :new, :create ] do
-    member do
-      patch :publish
-    end
+  resources :projects, only: [ :index, :show, :new, :create, :destroy ] do
+  member do
+    patch :publish
+  end
 
     # Un chat unique par project (has_one :chat)
     resource :chat, only: [ :show ], controller: "chats" do
