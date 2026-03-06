@@ -24,6 +24,32 @@ class ChatsController < ApplicationController
       content: Codi::ProjectRefiner.system_prompt
     )
 
+    chat.messages.create!(
+      role: "assistant",
+      content: initial_context_message(project)
+    )
+
     chat
+  end
+
+  def initial_context_message(project)
+    <<~TEXT
+      Bonjour, j’ai bien récupéré le contexte de ton projet.
+
+      **Titre :** #{project.title}
+      **Catégorie :** #{project.category.to_s.humanize}
+      **Niveau :** #{project.level.to_s.humanize}
+      **Durée :** #{project.duration.to_s.humanize}
+
+      **Description actuelle :**
+      #{project.full_description.presence || project.short_description.presence || "Aucune description fournie pour le moment."}
+
+      Tu peux maintenant me demander d’affiner le projet :
+      - modifier la stack technique
+      - rendre la description plus claire
+      - ajouter des rôles dans l’équipe
+      - préciser les objectifs
+      - structurer la timeline
+    TEXT
   end
 end
