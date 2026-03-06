@@ -26,6 +26,7 @@ class ProjectsController < ApplicationController
       return render :new, status: :unprocessable_entity
     end
 
+
     begin
       data = Codi::ProjectGenerator.new(@project).call
 
@@ -50,9 +51,15 @@ class ProjectsController < ApplicationController
   def show
   end
 
+  def destroy
+  @project = Project.find(params[:id])
+  @project.destroy
+  redirect_to projects_path, notice: "Projet supprimé avec succès💥."
+  end
+
   def publish
     @project.update!(status: :published)
-    redirect_to projects_path, notice: "Projet publié."
+    redirect_to projects_path, notice: "Projet publié avec succès 🎉."
   end
 
   private
