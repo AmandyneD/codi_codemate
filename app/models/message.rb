@@ -3,8 +3,6 @@
 class Message < ApplicationRecord
   belongs_to :chat
 
-  ROLES = %w[system user assistant].freeze
-
-  validates :role, inclusion: { in: ROLES }
+  validates :role, inclusion: { in: %w[system user assistant] }
   validates :content, presence: true
 end

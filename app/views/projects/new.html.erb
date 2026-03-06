@@ -1,7 +1,7 @@
 <h1 class="text-center mb-4 fw-bold" style="color: black;">
   Créer un nouveau projet
   </h1>
-<p class="text-center mb-4 text-muted">Remplis le formulaire et fais toi aider par Codi pour affiner !</p>
+<p class="text-center mb-5 text-muted">Remplis le formulaire et fais toi aider par Codi pour affiner !</p>
 
 <%= form_with model: @project do |f| %>
   <% if @project.errors.any? %>
@@ -14,7 +14,7 @@
     </div>
   <% end %>
 
-  <div class="card p-3 shadow-sm border-2 border-warning">
+  <div class="card p-3 shadow-sm border-2 border-warning mb-5">
     <div class="card-title mb-1">
       <%= f.label :title, "Nom de ton projet*", class: "form-label" %>
       <%= f.text_field :title, class: "form-control", placeholder: "Ex: Application de gestion de projet" %>
