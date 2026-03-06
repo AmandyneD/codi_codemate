@@ -30,3 +30,25 @@
     Codi renverra un JSON et le projet sera mis à jour automatiquement.
   </small>
 </div>
+
+<script>
+  function scrollChatToBottom() {
+    const messages = document.getElementById("messages");
+    if (messages) {
+      messages.scrollTop = messages.scrollHeight;
+    }
+  }
+
+  document.addEventListener("turbo:load", () => {
+    scrollChatToBottom();
+
+    const messages = document.getElementById("messages");
+    if (!messages) return;
+
+    const observer = new MutationObserver(() => {
+      scrollChatToBottom();
+    });
+
+    observer.observe(messages, { childList: true, subtree: true });
+  });
+</script>
